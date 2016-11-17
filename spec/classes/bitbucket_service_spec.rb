@@ -1,7 +1,7 @@
 require 'spec_helper.rb'
 
-describe 'stash' do
-  describe 'stash::service' do
+describe 'bitbucket' do
+  describe 'bitbucket::service' do
     context 'supported operating systems' do
       on_supported_os.each do |os, facts|
         context "on #{os} #{facts}" do
@@ -13,7 +13,7 @@ describe 'stash' do
             let(:params) do
               { javahome: '/opt/java' }
             end
-            it { is_expected.to contain_service('stash') }
+            it { is_expected.to contain_service('bitbucket') }
           end
 
           context 'overwriting service_manage param' do
@@ -23,7 +23,7 @@ describe 'stash' do
                 service_manage: false
               }
             end
-            it { is_expected.not_to contain_service('stash') }
+            it { is_expected.not_to contain_service('bitbucket') }
           end
 
           context 'overwriting service params' do
@@ -35,7 +35,7 @@ describe 'stash' do
               }
             end
             it do
-              is_expected.to contain_service('stash').
+              is_expected.to contain_service('bitbucket').
                 with('ensure' => 'stopped',
                      'enable' => 'false')
             end

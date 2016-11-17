@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'stash' do
+describe 'bitbucket' do
   context 'supported operating systems' do
     on_supported_os.each do |os, facts|
       context "on #{os} #{facts}" do
@@ -18,16 +18,16 @@ describe 'stash' do
           end
 
           it { is_expected.to compile.with_all_deps }
-          it { is_expected.to contain_class('stash') }
-          it { is_expected.to contain_class('stash::params') }
-          it { is_expected.to contain_anchor('stash::start').that_comes_before('Class[stash::install]') }
-          it { is_expected.to contain_class('stash::install').that_comes_before('Class[stash::config]') }
-          it { is_expected.to contain_class('stash::config') }
-          it { is_expected.to contain_class('stash::backup') }
-          it { is_expected.to contain_class('stash::service').that_subscribes_to('Class[stash::config]') }
-          it { is_expected.to contain_anchor('stash::end').that_requires('Class[stash::service]') }
+          it { is_expected.to contain_class('bitbucket') }
+          it { is_expected.to contain_class('bitbucket::params') }
+          it { is_expected.to contain_anchor('bitbucket::start').that_comes_before('Class[bitbucket::install]') }
+          it { is_expected.to contain_class('bitbucket::install').that_comes_before('Class[bitbucket::config]') }
+          it { is_expected.to contain_class('bitbucket::config') }
+          it { is_expected.to contain_class('bitbucket::backup') }
+          it { is_expected.to contain_class('bitbucket::service').that_subscribes_to('Class[bitbucket::config]') }
+          it { is_expected.to contain_anchor('bitbucket::end').that_requires('Class[bitbucket::service]') }
           it { is_expected.to contain_class('archive') }
-          it { is_expected.to contain_service('stash') }
+          it { is_expected.to contain_service('bitbucket') }
         end
       end
     end
@@ -40,7 +40,7 @@ describe 'stash' do
           operatingsystemmajrelease: '7' }
       end
 
-      it { expect { is_expected.to contain_service('stash') }.to raise_error(Puppet::Error, %r{Nexenta 7 not supported}) }
+      it { expect { is_expected.to contain_service('bitbucket') }.to raise_error(Puppet::Error, %r{Nexenta 7 not supported}) }
     end
   end
 end

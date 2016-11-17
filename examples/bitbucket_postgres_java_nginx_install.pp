@@ -12,7 +12,7 @@ node default {
     download_timout => 1800,
     strip           => true,
   } ->
-  class { '::stash':
+  class { '::bitbucket':
     version  => '3.6.0',
     javahome => '/opt/java',
     proxy    => {
@@ -21,9 +21,9 @@ node default {
       proxyPort => '80',
     },
   }
-  class { '::stash::gc': }
-  class { '::stash::facts': }
-  nginx::resource::upstream { 'stash':
+  class { '::bitbucket::gc': }
+  class { '::bitbucket::facts': }
+  nginx::resource::upstream { 'bitbucket':
     ensure  => present,
     members => [ 'localhost:7990' ],
   }
@@ -31,7 +31,7 @@ node default {
     ensure               => present,
     server_name          => [ $::ipaddress_eth1, $::fqdn, $hostname ],
     listen_port          => '80',
-    proxy                => 'http://stash',
+    proxy                => 'http://bitbucket',
     proxy_read_timeout   => '300',
     location_cfg_prepend => {
       'proxy_set_header X-Forwarded-Host'   => '$host',
@@ -41,8 +41,8 @@ node default {
       'proxy_redirect'                      => 'off',
     },
   }
-  postgresql::server::db { 'stash':
-    user     => 'stash',
-    password => postgresql_password('stash', 'password'),
+  postgresql::server::db { 'bitbucket':
+    user     => 'bitbucket',
+    password => postgresql_password('bitbucket', 'password'),
   }
 }

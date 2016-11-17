@@ -14,7 +14,7 @@ node default {
     download_timout => 1800,
     strip           => true,
   } ->
-  class { '::stash':
+  class { '::bitbucket':
     version  => '3.6.0',
     javahome => '/opt/java',
     proxy    => {
@@ -23,10 +23,10 @@ node default {
       proxyPort => '80',
     },
   }
-  class { '::stash::gc': }
-  class { '::stash::facts': }
-  postgresql::server::db { 'stash':
-    user     => 'stash',
-    password => postgresql_password('stash', 'password'),
+  class { '::bitbucket::gc': }
+  class { '::bitbucket::facts': }
+  postgresql::server::db { 'bitbucket':
+    user     => 'bitbucket',
+    password => postgresql_password('bitbucket', 'password'),
   }
 }

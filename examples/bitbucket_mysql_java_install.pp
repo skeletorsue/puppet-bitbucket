@@ -9,24 +9,24 @@ node default {
     root_password => 'strongpassword',
   } ->
 
-  mysql::db { 'stash':
-    user     => 'stash',
+  mysql::db { 'bitbucket':
+    user     => 'bitbucket',
     password => 'password',
     host     => 'localhost',
     grant    => ['ALL'],
   } ->
 
-  class { '::stash':
+  class { '::bitbucket':
     version  => $version,
     javahome => '/opt/java',
     dbdriver => 'com.mysql.jdbc.Driver',
   } ->
 
   class { '::mysql_java_connector':
-    links  => [ "/opt/stash/atlassian-stash-${version}/lib" ],
-    notify => Service['stash'],
+    links  => [ "/opt/bitbucket/atlassian-bitbucket-${version}/lib" ],
+    notify => Service['bitbucket'],
   }
 
-  class { '::stash::facts': }
+  class { '::bitbucket::facts': }
 
 }

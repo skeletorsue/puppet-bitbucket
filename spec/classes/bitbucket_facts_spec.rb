@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe 'stash::facts', type: :class do
+describe 'bitbucket::facts', type: :class do
   context 'supported operating systems' do
-    let(:pre_condition) { "class{'::stash': javahome => '/opt/java', }" }
+    let(:pre_condition) { "class{'::bitbucket': javahome => '/opt/java', }" }
     on_supported_os.each do |os, facts|
       context "on #{os} #{facts}" do
         let(:facts) do
@@ -10,8 +10,8 @@ describe 'stash::facts', type: :class do
         end
         regexp_pe = %r{^#!/opt/puppet/bin/ruby$}
         regexp_oss = %r{^#!/usr/bin/env ruby$}
-        pe_external_fact_file = '/etc/puppetlabs/facter/facts.d/stash_facts.rb'
-        external_fact_file = '/etc/facter/facts.d/stash_facts.rb'
+        pe_external_fact_file = '/etc/puppetlabs/facter/facts.d/bitbucket_facts.rb'
+        external_fact_file = '/etc/facter/facts.d/bitbucket_facts.rb'
 
         it { is_expected.to contain_file(external_fact_file) }
 
@@ -37,11 +37,11 @@ describe 'stash::facts', type: :class do
 
         context 'with context' do
           let(:params) do
-            { context_path: '/stash' }
+            { context_path: '/bitbucket' }
           end
           it do
             is_expected.to contain_file(external_fact_file). \
-              with_content(%r{7990/stash/rest/api/})
+              with_content(%r{7990/bitbucket/rest/api/})
           end
         end
       end
