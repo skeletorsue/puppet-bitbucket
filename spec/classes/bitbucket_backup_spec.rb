@@ -15,7 +15,7 @@ describe 'bitbucket' do
             end
             it 'deploys bitbucket backup client 1.9.1 from tar.gz' do
               is_expected.to contain_archive("/tmp/bitbucket-backup-distribution-#{BACKUP_VERSION}.tar.gz").
-                with('source'       => "https://maven.atlassian.com/public/com/atlassian/bitbucket/backup/bitbucket-backup-distribution/#{BACKUP_VERSION}/bitbucket-backup-distribution-#{BACKUP_VERSION}.tar.gz",
+                with('source'       => "https://maven.atlassian.com/public/com/atlassian/stash/backup/stash-backup-distribution/#{BACKUP_VERSION}/stash-backup-distribution-#{BACKUP_VERSION}.tar.gz",
                      'extract_path' => "/opt/bitbucket-backup/bitbucket-backup-client-#{BACKUP_VERSION}",
                      'creates'      => "/opt/bitbucket-backup/bitbucket-backup-client-#{BACKUP_VERSION}/lib",
                      'user'         => 'bitbucket',
@@ -75,7 +75,7 @@ describe 'bitbucket' do
             end
             it do
               is_expected.to contain_archive('/tmp/bitbucket-backup-distribution-99.43.111.tar.gz').
-                with('source' => 'https://maven.atlassian.com/public/com/atlassian/bitbucket/backup/bitbucket-backup-distribution/99.43.111/bitbucket-backup-distribution-99.43.111.tar.gz',
+                with('source' => 'https://maven.atlassian.com/public/com/atlassian/stash/backup/stash-backup-distribution/99.43.111/stash-backup-distribution-99.43.111.tar.gz',
                      'extract_path' => '/opt/bitbucket-backup/bitbucket-backup-client-99.43.111',
                      'creates' => '/opt/bitbucket-backup/bitbucket-backup-client-99.43.111/lib',
                      'user' => 'bitbucket',
