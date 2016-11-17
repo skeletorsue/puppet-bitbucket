@@ -354,7 +354,7 @@ Reverse https proxy configuration. See examples for more detail. Default: {}
 
 ##### `download_url`
 
-Where to download the bitbucket binaries from. Default: <http://www.atlassian.com/software/bitbucket/downloads/binary/>
+Where to download the bitbucket binaries from. Default: <http://www.atlassian.com/software/stash/downloads/binary/>
 
 ##### `checksum`
 

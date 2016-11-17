@@ -18,7 +18,7 @@ describe 'bitbucket' do
           it 'deploys bitbucket from archive' do
             is_expected.to contain_archive("/tmp/atlassian-bitbucket-#{STASH_VERSION}.tar.gz").
               with('extract_path' => "/opt/bitbucket/atlassian-bitbucket-#{STASH_VERSION}",
-                   'source' => "http://www.atlassian.com/software/bitbucket/downloads/binary//atlassian-bitbucket-#{STASH_VERSION}.tar.gz",
+                   'source' => "http://www.atlassian.com/software/stash/downloads/binary//atlassian-bitbucket-#{STASH_VERSION}.tar.gz",
                    'creates' => "/opt/bitbucket/atlassian-bitbucket-#{STASH_VERSION}/conf",
                    'user' => 'bitbucket',
                    'group' => 'bitbucket',
